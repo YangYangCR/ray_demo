@@ -1,4 +1,5 @@
 # https://docs.ray.io/en/latest/ray-overview/getting-started.html
+# https://vllm.hyper.ai/docs/inference-and-serving/multimodal_inputs
 
 import ray
 
