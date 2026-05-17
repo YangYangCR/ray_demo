@@ -2,7 +2,7 @@ import time
 
 import ray
 
-ray.init()
+ray.init(address="auto")
 
 """
     @ray.remote这个注解加到一个方法上，会生成一个Task
@@ -25,6 +25,8 @@ class Counter:
     def __init__(self):
         self.i = 0
 
+    """ 默认情况下会 开启Actor事件报告，enable_task_events=False表示不上报该方法的状态"""
+    @ray.method(enable_task_events=False)
     def get(self):
         return self.i
 
@@ -56,4 +58,4 @@ print(ray.get(c.get.remote()))
     在 Ray 里，Driver 就是：
     启动 Ray 作业的那个 Python 主程序
 """
-time.sleep(10000000)
+time.sleep(100)
